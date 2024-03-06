@@ -9,6 +9,8 @@ import com.crud.entity.dto.LeadDto;
 import com.crud.repository.LeadRepository;
 import com.crud.service.LeadService;
 
+import java.util.Optional;
+
 @Service
 public class LeadServiceImpl implements LeadService{
 	
@@ -26,6 +28,12 @@ public class LeadServiceImpl implements LeadService{
 		Lead savedLead = leadRepo.save(lead);
 		//converting entity to dto
 		return modelMapper.map(savedLead, LeadDto.class);
+	}
+
+	@Override
+	public LeadDto getLeadById(Long id) {
+		Lead lead = leadRepo.findById(id).get();
+		return modelMapper.map(lead,LeadDto.class);
 	}
 
 }

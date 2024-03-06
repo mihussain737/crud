@@ -1,12 +1,9 @@
-package com.crud.entity.controller;
+package com.crud.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.crud.entity.dto.LeadDto;
 import com.crud.service.LeadService;
@@ -22,5 +19,11 @@ public class LeadController {
 	public ResponseEntity<LeadDto> saveLead(@RequestBody LeadDto leadDto){
 		LeadDto savedLead=leadService.saveLead(leadDto);
 		return new ResponseEntity<>(savedLead,HttpStatus.CREATED);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<LeadDto> getLeadById(@PathVariable Long id){
+		LeadDto leadById = leadService.getLeadById(id);
+		return new ResponseEntity<>(leadById,HttpStatus.OK);
 	}
 }

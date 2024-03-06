@@ -5,5 +5,6 @@ import com.crud.entity.dto.LeadDto;
 public interface LeadService {
 
 	LeadDto saveLead(LeadDto leadDto);
+	LeadDto getLeadById(Long id);
 
 }
