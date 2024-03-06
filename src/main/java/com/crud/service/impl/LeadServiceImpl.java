@@ -9,7 +9,9 @@ import com.crud.entity.dto.LeadDto;
 import com.crud.repository.LeadRepository;
 import com.crud.service.LeadService;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class LeadServiceImpl implements LeadService{
@@ -34,6 +36,13 @@ public class LeadServiceImpl implements LeadService{
 	public LeadDto getLeadById(Long id) {
 		Lead lead = leadRepo.findById(id).get();
 		return modelMapper.map(lead,LeadDto.class);
+	}
+
+	@Override
+	public List<LeadDto> getAllLeads() {
+		List<Lead> leads = leadRepo.findAll();
+		List<LeadDto> dtos = leads.stream().map(lead -> modelMapper.map(leads, LeadDto.class)).collect(Collectors.toList());
+		return dtos;
 	}
 
 }
