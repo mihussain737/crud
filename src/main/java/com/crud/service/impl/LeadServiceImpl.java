@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.crud.entity.Lead;
-import com.crud.entity.dto.LeadDto;
+import com.crud.dto.LeadDto;
 import com.crud.repository.LeadRepository;
 import com.crud.service.LeadService;
 

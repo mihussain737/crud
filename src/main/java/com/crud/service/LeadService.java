@@ -2,7 +2,7 @@ package com.crud.service;
 
 import com.crud.entity.Lead;
 import com.crud.entity.Lead;
-import com.crud.entity.dto.LeadDto;
+import com.crud.dto.LeadDto;
 
 import java.util.List;
 

@@ -1,51 +1,28 @@
-package com.crud.entity.dto;
+package com.crud.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class LeadDto {
-	
-	private Long id;
-	private String firstName;
-	private String lastName;
-	private String email;
-	private Long mobile;
-	public LeadDto(Long id, String firstName, String lastName, String email, Long mobile) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.mobile = mobile;
-	}
-	public LeadDto() {
-		
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public Long getMobile() {
-		return mobile;
-	}
-	public void setMobile(Long mobile) {
-		this.mobile = mobile;
-	}
 
+
+	private Long id;
+	@NotEmpty(message = "first name can't be empty")
+	private String firstName;
+	@NotEmpty(message = "last name can't be empty")
+	private String lastName;
+	@Email(message = "Invalid format of Email")
+	private String email;
+//	@Pattern(regexp="\\d{10}", message = "Mobile number must be a 10-digit number")
+	private Long mobile;
 }
