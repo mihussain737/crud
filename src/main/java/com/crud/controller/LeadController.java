@@ -1,5 +1,6 @@
 package com.crud.controller;
 
+import com.crud.entity.Lead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,5 +34,15 @@ public class LeadController {
 	public ResponseEntity<List<LeadDto>> getAllLeads(){
 		List<LeadDto> allLeads = leadService.getAllLeads();
 		return new ResponseEntity<>(allLeads,HttpStatus.OK);
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteLeadById(@PathVariable Long id){
+		leadService.deleteById(id);
+		return new ResponseEntity<>("Lead is deleted with id:-"+id,HttpStatus.OK);
+	}
+	@PutMapping("/{id}")
+	public ResponseEntity<LeadDto>updateLeadById(@PathVariable Long id,@RequestBody LeadDto leadDto){
+		LeadDto leadDto1 = leadService.updateLeadById(id, leadDto);
+		return new ResponseEntity<>(leadDto1,HttpStatus.OK);
 	}
 }

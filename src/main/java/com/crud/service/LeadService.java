@@ -1,6 +1,7 @@
 package com.crud.service;
 
 import com.crud.entity.Lead;
+import com.crud.entity.Lead;
 import com.crud.entity.dto.LeadDto;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface LeadService {
 	LeadDto getLeadById(Long id);
 	List<LeadDto> getAllLeads();
 
+	void deleteById(Long id);
+	LeadDto updateLeadById(Long id,LeadDto leadDto);
 }
